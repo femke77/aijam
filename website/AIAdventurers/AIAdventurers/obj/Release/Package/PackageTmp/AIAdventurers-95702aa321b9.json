@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "aiadventurers-198707",
+  "private_key_id": "95702aa321b9de2a83b79bff54424a4a023aa0d5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDFbL9X61OnHHVp\nJLArXTzTxO8mIqhuCNyl66Nb9LEvgj/JTe/Lz2f5kPOg67WZivYWLj2hvJrsXUlk\nBowlLuMpDTY0ofiM2g6oByzyj0qugo1yYUm75VVJs5ptLy2xbSz0T4DlpAWz9AYJ\n0GsSLbDb+aWf/DdjsxyRDyCwih/2TySXwCxHxhWn7wkG4ZXNDBZLMghXGW2cbRzf\nCUV1y5Ru9SKLIE8Z5683GTpbyeSbIY3NhngVYAvCUYqMtUntvWa6DbOaAH2nglUi\nBu82E7NcopXTZI7/LH6KpxbuNJII5opFny/W4rzIXeV3IKx1j0IKTmLoLKs07WKu\nTP7IzsifAgMBAAECggEAFtwXMdJ1Xrm8XJ7baUIEC49Xk6Zas1cCWZH12e104Mfn\no+MK26IZ63tdwmnYnr1I7luPVl104N6SY2sgqiOKORQnDSQeGA0dulYOXc26u4cx\nYqeiNogA/qY1wOPAGjXGiUl1ZuG9qU8dreA8rZ+txWLcSzCUp04zhhZm1hpARjBC\nuq4EivI3ArWnYn8VnsLW1UoJDNNWeCVtmKwn/HEl769zHc4Ao9wkyrDl7tlpcwoe\n1h12/6GCQqVJfqYKbWtTpqTfvgNl2KBrBmfYVw19R0LqTCG+PqeeIEyuk4AO4XEf\nYHkCO2npshYrXrvp+dw1pcussEpeVGCYhqWsBH1JqQKBgQDnL5vDJXagGTLB6Mpy\nBCzlMVd1mEyqBdmrQnnuuJhW3diwjdG8FY/dqxNra2nSw+jijB6s3wdTrRIS5tHz\nlSkb58Ar6B3GCW9q8TwltpEBfFa45GPJyASTABzGAvs01wJt2Kai6znl3l5B0uIl\nRhz7t3cxB3JThRhJ3tzj2y6/lwKBgQDanXgmpJ75g/w4RNpt460GOBoV1A6OABHO\n0ZVN+0BrEH/RtGapwljo6glUWoL5wWAcEzqEamZaDsCVlxgLyt2hXsrgkv8K8Vcn\n9z6B8vVVOw3085bycOYCP29qmiMJCtNVeAGVqRyh0JVoimkLVX5VtOo9Kdjebx0k\nTkrsYo7gOQKBgQCYmx+p4Mf+hMOxprZELydnn3uJH6CztyrpVvdgMrA03zqTyPoC\nuwT9oVkvVndDbpkDOtVg7dRLUvqUSZObxAGf7wo2sYE94aqPoHBAwNPVdDtWz0Rj\nxUnns3JK71rdlXSACDxvXPEaIQB9WPR5AGBPdNsUHUNFiJzw3lFXg67HPwKBgEXp\nIalJ78TfXmMoMan+qzBX9I+Sdu0WPJulDlgXxyv15MpNJJ+ZFRG29jDRmR0BqBiS\nVZ5O4Fhga1nrLbdnsqSOSdaza3g2YabYPFcWOTp+XiI9W8JANG33l0vB6v5TRe4J\nKIiRwiRFLeJ2kM0dE/+YkWfp3/6SDgG0P+WERyiRAoGAMFRQMf0T9/qDUX7+KJKW\n0zxnpSdcAKS1AbugSKV1/gC+MuWOneDzZ5tdEL3cVy30A+c2ChgZSYopyjSmZJNE\nG5DeG098Tw/WjrsDnIhSn1LF4ZI7MeHwVIkZ/6pjhmv1BdxDtm82AYlEanlD+sSP\nlkfE/nlj4bOvTsVgaWStuXQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "nhattran@aiadventurers-198707.iam.gserviceaccount.com",
+  "client_id": "108069328893655512079",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nhattran%40aiadventurers-198707.iam.gserviceaccount.com"
+}
