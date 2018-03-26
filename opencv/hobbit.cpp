@@ -12,7 +12,8 @@ using namespace std;
 
 int main( int argc, char** argv)
 {
-FILE *fp;
+FILE *fps;
+FILE *fpt;
 Mat img=imread("1.jpg");
 Mat src=img.clone();
 Mat Blackie;
@@ -21,8 +22,8 @@ char *p;
 int momel=100;
 RNG rng(12345);
 
-fp=fopen("bg.txt", "w+");
-
+fps=fopen("bgs.txt", "w+");
+fpt=fopen("bgt.txt", "w+");
 if (argc>1)
 {
 long arg=strtol(argv[1],&p,10);
@@ -42,11 +43,12 @@ String filename(hakama.str());
 //cout<<filename;
 imwrite(filename,Blackie);
 
-fprintf(fp,"./BW%d.jpg\n",x);
-
+fprintf(fpt,"./BW%d.jpg\n",x);
+fprintf(fps,"bgBW/BW%d.jpg\n",x);
 
 }
 //waitKey(0);
-fclose(fp);
+fclose(fpt);
+fclose(fps);
 return(0);
 }
