@@ -60,16 +60,14 @@ vector<Rect> boundRect(contours.size());
 
 
 //creating bounding rectangles relative to contours
-
-
 for(int x=0;x<contours.size();x++)
 {
 approxPolyDP(Mat(contours[x]),contours_poly[x],3,true);
 boundRect[x]=boundingRect(Mat(contours_poly[x]));
 area=contourArea(contours[x]);
-if (area>(foodarea/8))
+if (area>(foodarea/128))
 {
-//cout<<"area"<<area<<" a"<<a<<" food area"<<foodarea/8<<"\n";
+cout<<"area"<<area<<" a"<<a<<" food area"<<foodarea/16<<"\n";
 food[a]=x;
 a++;
 }
@@ -88,7 +86,7 @@ String filename(hakama.str());
 imwrite(filename,crops[x]);
 }
 /**/
-imshow("SUM FUK?",src);
+//imshow("SUM FUK?",src);
 waitKey(0);
 return(0);
 }
