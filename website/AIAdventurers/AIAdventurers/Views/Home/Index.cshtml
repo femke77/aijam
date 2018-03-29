@@ -1,12 +1,14 @@
 ﻿@model AIAdventurers.Models.VisionViewModel
 @{
+    /**/
+
     ViewBag.Title = "Home Page";
 }
 
 @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post,
                             new { enctype = "multipart/form-data" }))
 {
-    <label for="file">Upload Image:</label>
+    <label for="file">Upload Food Photo:</label>
     <input type="file" name="file" id="file" style="width: 100%;" />
     <input type="submit" value="Upload" class="submit" />
 }
@@ -14,4 +16,26 @@
 
 <img src="@Model.imageUrl" width="400" />
 
-<div>@Model.GoogleVisionResults</div>
+@if (!string.IsNullOrEmpty(Model.imageUrl))
+{
+    <div>Foods detected: </div>
+
+
+    <table >
+        <tr><th>Ingredients</th> <th>Calories</th></tr>
+        @foreach (var d in Model.Ingredients)
+        {
+            <tr>
+                <td>@d.Name</td>
+                <td>@d.Calorie</td>
+
+
+            </tr>
+        }
+    </table>
+
+    <div>Total calories: @Model.TotalCalories.ToString()</div>
+
+}
+
+
