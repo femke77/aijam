@@ -9,6 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Firebase.Database;
+using Firebase.Database.Query;
+using System.Threading.Tasks;
 
 namespace AIAdventurers.Controllers
 {
@@ -97,6 +100,81 @@ namespace AIAdventurers.Controllers
             return View("Index", model);
         }
 
+        //volume of cylinder pi r squared height
+        //volume of sphere = 4/3 pi r cubed
+        private async Task CalculateNutrition(string foodname, double radius, double height = 1) //optional argument length for when not needed
+        {
+            Food fooditem = new Food();
+            try
+            {
+                var firebase = new FirebaseClient("https://projec-7236f.firebaseio.com");
+
+                //pull data from firebase database as 1 food item
+                var food_db = await firebase
+                     .Child("Nutrition")
+                     .OrderByKey()
+                     .StartAt(foodname)
+                     .LimitToFirst(1)
+                     .OnceAsync<Food>();
+
+
+                //pull out the children of the object for calculations
+                foreach (var i in food_db)
+                {
+                    fooditem.Calories = i.Object.Calories;
+                    fooditem.Fat = i.Object.Fat;
+                    fooditem.Protein = i.Object.Protein;
+                    fooditem.Carb = i.Object.Carb;
+                    fooditem.Shape = i.Object.Shape;
+                    fooditem.Density = i.Object.Density;
+
+
+                }
+
+                //update fooditem by the mass 
+                fooditem.Calories *= mass;
+                fooditem.Fat *= mass;
+                fooditem.Carb *= mass;
+                fooditem.Protein *= mass;
+
+                //put back into database under the daily path 
+                await firebase
+                .Child("Daily")
+                .Child(foodname)
+                .PutAsync(new Food(fooditem.Calories, fooditem.Fat, fooditem.Carb, fooditem.Protein));
+
+            }
+            catch (Exception ex)
+            {
+                //need to add error handling here
+            }
+        }
+
+        //retrieves every child under path "Daily" and creates/returns a Day of total values per each nutrient
+        private async Task<Day> DayTotals()
+        {
+            Day day = new Day();
+            try
+            {
+                var firebase = new FirebaseClient("https://projec-7236f.firebaseio.com");
+                var food_db = await firebase
+                    .Child("Daily")
+                    .OnceAsync<Food>();
+
+                foreach (var i in food_db)
+                {
+                    day.T_Calories += i.Object.Calories;
+                    day.T_Fat += i.Object.Fat;
+                    day.T_Protein = i.Object.Protein;
+                    day.T_Carb = i.Object.Carb;
+                }
+            }
+            catch (Exception ex)
+            {
+                //error handling
+            }
+            return day;
+        }
 
 
 
