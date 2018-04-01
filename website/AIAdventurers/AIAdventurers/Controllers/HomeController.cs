@@ -96,5 +96,9 @@ namespace AIAdventurers.Controllers
             model.Ingredients = ingredients;
             return View("Index", model);
         }
+
+
+
+
     }
 }
