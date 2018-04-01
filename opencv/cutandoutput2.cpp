@@ -4,6 +4,10 @@
 #include <iostream>
 #include <opencv2/imgcodecs.hpp>
 #include <sstream>
+#include <math.h>
+//#include "json/json.h"
+//#include <stdio>
+
 using namespace cv;
 using namespace std;
 
@@ -15,11 +19,21 @@ cvtColor(momel,squirrel,COLOR_BGR2GRAY);
 blur(squirrel,squirrel,Size(3,3));
 return squirrel;
 }
+double platesize()
+{
+int  value=10;
+FILE *fr;
+fr=fopen("config.txt","r+");
+fscanf(fr,"%d",&value);
+cout<<"Pi "<<M_PI;
+return 4*M_PI * pow(2,value);
+}
+
 
 int main( int argc, char** argv)
 {
 char *p;
-int Level=100,a=0,largest=0,largest_I;
+int Level=100,plate,largest=0,largest_I;
 double foodarea;
 double area;
 Mat src,src_clone;
@@ -46,13 +60,13 @@ if (src.empty())
 cerr<<"Bruh! you no pic!"<<endl;
 return -1;
 }
-
+plate=platesize();
 foodarea=src.rows*src.cols;
 src_clone=preprocess(src);
 threshold(src_clone,src_clone,Level,255,THRESH_BINARY);
 //Canny(src_clone,src_clone,Level,255,5,false);
-imshow("Canny",src_clone);
-waitKey(0);
+//imshow("Canny",src_clone);
+//waitKey(0);
 findContours(src_clone,contours,hierarchy,RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0,0));
 
 //This could be defined above but then it wouldn't be limited. I think its better this way so its optimized because it has a max size
@@ -73,7 +87,7 @@ boundRect[x]=boundingRect(Mat(contours_poly[x]));
 //#pragma omp critical (largest,largest_I)
 if (contourArea(contours[x])>(foodarea/128))
 {
-cout<<"area"<<contourArea(contours[x])<<" a"<<a<<" food area"<<foodarea/16<<"\n";
+//cout<<"area"<<contourArea(contours[x])<<" a"<<a<<" food area"<<foodarea/16<<"\n";
 food.push_back(x);
 if (contourArea(contours[x])>largest && contourArea(contours[x])<(foodarea*.95))
 {
@@ -88,6 +102,7 @@ largest_I=x;
 for(int x=0;x<food.size();x++)
 {
 //cout<<" x " <<x<<"\n";
+
 crops=src(boundRect[food[x]]);
 ostringstream hakama;
 hakama<<"output"<<x<<".jpg";
@@ -95,11 +110,12 @@ hakama<<"output"<<x<<".jpg";
 String filename(hakama.str());
 //cout<<filename;
 imwrite(filename,crops);
+
 }
 /**/
 drawContours(src,contours,largest_I,Scalar(0,255,0),8);
 imwrite("Platebound.png",src);
-imshow("Special Plate?",src);
-waitKey(0);
+//imshow("Special Plate?",src);
+//waitKey(0);
 return(0);
 }
