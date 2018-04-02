@@ -41,7 +41,8 @@ vector <int> food;
 vector <vector<Point> > contours;
 vector <Vec4i> hierarchy;
 Mat crops;
-
+FILE *fs;
+fs=fopen("sizes.txt","w+");
 //if the user wants to specify the threshold
 if (argc>2)
 {
@@ -102,14 +103,16 @@ largest_I=x;
 for(int x=0;x<food.size();x++)
 {
 //cout<<" x " <<x<<"\n";
-
+if (contourArea(contours[food[x]])==largest)
+{
+continue;
+}
 crops=src(boundRect[food[x]]);
 ostringstream hakama;
 hakama<<"output"<<x<<".jpg";
-//cout<<hakama;
 String filename(hakama.str());
-//cout<<filename;
 imwrite(filename,crops);
+fprintf(fs,"\nfilename :%s\n filepath: %s\n surfacearea: %f",filename,filename,contourArea(contours[food[x]]));
 
 }
 /**/
