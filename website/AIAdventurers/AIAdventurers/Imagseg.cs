@@ -38,32 +38,33 @@ namespace AIAdventurers
             Mat hierarchy = new Mat();
             Mat crops = new Mat();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ccvx;
 
-            src = CvInvoke.Imread(imagepath, IMREAD_COLOR);
-            foodarea = src.rows * src.cols;
+            src = CvInvoke.Imread(imagepath);
+            double platearea = 84.3; //surface area in inches 
+            foodarea = src.Rows * src.Cols;
             src_clone = preprocess(src);
-            imshow("Canny", src_clone);
-            waitKey(0);
-            findContours(src_clone, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+            CvInvoke.Threshold(src_clone, src_clone, Level, 255, 0);
+            CvInvoke.FindContours(src_clone, contours, hierarchy, 3, 2, Point(0,0));
 
-            
-            vector<vector<Point>> contours_poly(contours.Size);
-            vector<Rect> boundRect(contours.Size);
+            VectorOfVectorOfPoint contours_poly = new VectorOfVectorOfPoint(contours.Size);
+            VectorOfRect boundRect = new VectorOfRect(contours.Size);
+             Rectangle<
 
             for (int x = 0; x < contours.Size; x++)
             {
-                approxPolyDP(Mat(contours[x]), contours_poly[x], 3, true);
-                boundRect[x] = boundingRect(Mat(contours_poly[x]));
+                CvInvoke.ApproxPolyDP(contours[x], contours_poly[x], 3, true);
+                boundRect[x] = CvInvoke.BoundingRectangle(contours_poly[x]);
+                
                 //area=contourArea(contours[x]);
                 //cout<<"hello"<<area;
 
                 //#pragma omp critical (largest,largest_I)
-                if (contourArea(contours[x]) > (foodarea / 128))
+                if (CvInvoke.ContourArea(contours[x]) > (foodarea / 128))
                 {
-                    cout << "area" << contourArea(contours[x]) << " a" << a << " food area" << foodarea / 16 << "\n";
-                    food.push_back(x);
-                    if (contourArea(contours[x]) > largest && contourArea(contours[x]) < (foodarea * .95))
+
+                    food.Push(x)
+                    if (CvInvoke.ContourArea(contours[x]) > largest && CvInvoke.ContourArea(contours[x]) < (foodarea * .95))
                     {
-                        largest = contourArea(contours[x]);
+                        largest = CvInvoke.ontourArea(contours[x]);
                         largest_I = x;
                     }
                 }
