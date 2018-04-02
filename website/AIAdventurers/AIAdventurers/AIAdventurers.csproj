@@ -288,6 +288,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\Food.cs" />
     <Compile Include="Models\VisionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
