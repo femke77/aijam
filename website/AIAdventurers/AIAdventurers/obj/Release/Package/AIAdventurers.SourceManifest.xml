@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="c:\users\anhtran\documents\visual studio 2017\Projects\AIAdventurers\AIAdventurers\obj\Release\Package\PackageTmp" />
-  <setAcl path="c:\users\anhtran\documents\visual studio 2017\Projects\AIAdventurers\AIAdventurers\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="c:\users\anhtran\documents\visual studio 2017\Projects\AIAdventurers\AIAdventurers\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="C:\Users\megan\Documents\aijam\aijam\ai-jam\website\AIAdventurers\AIAdventurers\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\megan\Documents\aijam\aijam\ai-jam\website\AIAdventurers\AIAdventurers\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\megan\Documents\aijam\aijam\ai-jam\website\AIAdventurers\AIAdventurers\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>
