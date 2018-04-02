@@ -2,37 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Util;
 using Emgu.CV;
+
 
 
 namespace AIAdventurers
 {
     public class Imagseg
-    {
+    { 
 
 
         Mat preprocess(Mat momel)
         {
-            Mat squirrel;
-            cvtColor(momel, squirrel, COLOR_BGR2GRAY);
-            blur(squirrel, squirrel, Size(3, 3));
+            
+            Mat squirrel = new Mat();
+            CvInvoke.CvtColor(momel, squirrel, ColorConversion.Bgr2Bgra);
+            CvInvoke.Blur(squirrel, squirrel, Size(3,3), Point(-1,1));
             return squirrel;
         }
 
-        List<String> segmentation(string imagepath)
+       
+        public List<String> segmentation(string imagepath)
         {
             List<String> segmentedImages = new List<String>();
             string imageDirectory = new DirectoryInfo(imagepath).Name;
             int Level = 100, a = 0, largest = 0, largest_I;
             double foodarea;
             double area;
-            Mat src, src_clone;
-            vector<int> food;
-            vector<vector<Point>> contours;
-            vector<Vec4i> hierarchy;
-            Mat crops;
+            Mat src = new Mat();
+            Mat src_clone = new Mat();
+            VectorOfInt food = new VectorOfInt();
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat hierarchy = new Mat();
+            Mat crops = new Mat();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ccvx;
 
-            src = imread(imagepath, IMREAD_COLOR);
+            src = CvInvoke.Imread(imagepath, IMREAD_COLOR);
             foodarea = src.rows * src.cols;
             src_clone = preprocess(src);
             imshow("Canny", src_clone);

@@ -19,6 +19,8 @@ namespace AIAdventurers.Controllers
     {
         public ActionResult Index(VisionViewModel model)
         {
+            Imagseg seg = new Imagseg();
+            seg.segmentation("");
             return View(model);
         }
 
