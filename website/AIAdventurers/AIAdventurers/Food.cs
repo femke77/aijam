@@ -18,6 +18,16 @@ namespace AIAdventurers
 
         }
 
+        public Food(double calorie, double fat, double carb, double protein)
+        {
+            Calories = calorie;
+            Fat = fat;
+            Carb = carb;
+            Protein = protein;
+
+
+        }
+
         public Food()
         {
 

@@ -102,13 +102,13 @@ namespace AIAdventurers.Controllers
 
         //volume of cylinder pi r squared height
         //volume of sphere = 4/3 pi r cubed
-        private async Task CalculateNutrition(string foodname, double radius, double height = 1) //optional argument length for when not needed
+        private async Task CalculateNutrition(string foodname, double radius, double height = 1.0) //optional argument length for when not needed
         {
             Food fooditem = new Food();
             try
             {
                 var firebase = new FirebaseClient("https://projec-7236f.firebaseio.com");
-
+                double mass = 0;
                 //pull data from firebase database as 1 food item
                 var food_db = await firebase
                      .Child("Nutrition")
@@ -127,10 +127,18 @@ namespace AIAdventurers.Controllers
                     fooditem.Carb = i.Object.Carb;
                     fooditem.Shape = i.Object.Shape;
                     fooditem.Density = i.Object.Density;
-
-
                 }
 
+                if (fooditem.Shape == "sphere")
+                {
+                    mass = 1.333 * 3.14 * (radius * radius * radius) * fooditem.Density;
+                }
+
+                if (fooditem.Shape == "cylinder")
+                {
+                    mass = 3.14 * radius * radius * height * fooditem.Density;
+
+                }
                 //update fooditem by the mass 
                 fooditem.Calories *= mass;
                 fooditem.Fat *= mass;
