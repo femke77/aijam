@@ -293,6 +293,7 @@
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\VisionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
